@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Environment and secrets
+.env
+*.env.local
+api_key.txt
+api_key_*.txt
+
+# Generated outputs
+evaluation/results/*.csv
+evaluation/plots/*.png
+logs/
+*.log
+sas_plan*
+output.sas
+
+# Media and simulator captures
+docs/demo_video_script/*.mp4
+docs/demo_video_script/*.mov
+docs/demo_video_script/*.avi
+simulation/ai2thor_floor6/screenshots/
+simulation/gazebo_limo/bags/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

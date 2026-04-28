@@ -1,0 +1,19 @@
+app = "open-lamma-r"
+primary_region = "lhr"
+
+[build]
+  dockerfile = "backend/Dockerfile"
+
+[env]
+  LLM_PROVIDER = "ollama"
+  OLLAMA_MODEL = "llama3.1:8b"
+  USE_PAID_API = "false"
+  EXECUTION_MODE = "dry_run"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+

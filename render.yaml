@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: open-lamma-r-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: LLM_PROVIDER
+        value: ollama
+      - key: OLLAMA_BASE_URL
+        sync: false
+      - key: OLLAMA_MODEL
+        value: llama3.1:8b
+      - key: USE_PAID_API
+        value: "false"
+      - key: EXECUTION_MODE
+        value: dry_run
+  - type: web
+    name: open-lamma-r-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: open-lamma-r-backend
+          property: host
+
