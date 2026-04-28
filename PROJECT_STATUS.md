@@ -22,6 +22,9 @@ Open LaMMA-R has been created as a clean dissertation artefact under `Open-Lamma
 - Evaluation script for ablation CSVs and plots.
 - Tests for the critical dry-run path.
 - Setup guides, dissertation draft and recording instructions.
+- No-server AI2-THOR Floor 6 video command:
+  - `scripts/run_floor6_ai2thor_video.py`
+  - `scripts/run_floor6_ai2thor_video.ps1`
 
 ## Verification Performed
 
@@ -39,6 +42,8 @@ Open LaMMA-R has been created as a clean dissertation artefact under `Open-Lamma
   - `evaluation/plots/travel_cost.png`
   - `evaluation/plots/planning_time.png`
   - `evaluation/plots/utility_score.png`
+- `python -m pytest tests -q` passes after dependency installation.
+- `scripts/run_floor6_ai2thor_video.py` plans the Floor 6 mission and reaches the AI2-THOR launch stage. On this Windows machine, AI2-THOR fails because no Windows build exists for its Unity commit. This is an external simulator/platform limitation, not a planning pipeline failure.
 
 ## Local Runtime Limitations Observed
 
@@ -56,12 +61,12 @@ Open LaMMA-R has been created as a clean dissertation artefact under `Open-Lamma
 - Optional: AI2-THOR.
 - Optional: ROS 2 Humble/Jazzy with LIMO/Nav2 stack.
 - Optional: FFmpeg or VLC for video capture.
+- Linux/WSL2/display-capable workstation for AI2-THOR video generation.
 
 ## Next Engineering Stage
 
-1. Install Python dependencies with `pip install -r requirements.txt`.
-2. Run `python -m pytest tests -q`.
-3. Install frontend dependencies and run the GUI.
-4. Build Fast Downward or set `FAST_DOWNWARD_PATH`.
-5. Replace dry-run planner fallback with real planner output in demo evidence.
-6. Add screenshots/video once the GUI and simulator are running.
+1. Run `.\scripts\run_floor6_ai2thor_video.ps1`.
+2. Install VLC if you want automatic VLC playback instead of the default Windows video player.
+3. Build Fast Downward or set `FAST_DOWNWARD_PATH`.
+4. Replace dry-run planner fallback with real planner output in demo evidence.
+5. For visible LIMO robot bodies, connect the same plan trace to Gazebo/ROS 2 or custom AI2-THOR Unity robot assets.

@@ -36,6 +36,7 @@
 - Added a SciPy HiGHS MILP allocator with deterministic greedy fallback.
 - Added dry-run, AI2-THOR, and ROS 2/mock execution layers.
 - Added a React dashboard with command input, status, JSON, PDDL, plan, allocation, logs, metrics and download controls.
+- Added a no-server AI2-THOR Floor 6 MP4 evidence command for dissertation/demo use.
 - Added ten scenarios, evaluation CSV generation and plot generation.
 - Added tests for schema, PDDL, MILP, plan parsing and full dry-run pipeline.
 - Added dissertation-ready documentation and setup guides.
@@ -63,3 +64,21 @@ Nothing was deleted from the cloned upstream references. The new project deliber
 - Install ROS 2 Humble/Jazzy and LIMO/Nav2 stack for real robot dispatch.
 - Install VLC or FFmpeg for recording demo evidence.
 
+## What The Original LaMMA-P Repository Does
+
+`https://github.com/codewitted/LaMMA-P.git` is the original informing repository. It implements Language Model-Driven Multi-Agent PDDL Planning for MAT-THOR/AI2-THOR tasks. In practical terms, it takes household-style natural-language tasks, uses an OpenAI-backed language model to decompose and allocate subtasks, generates PDDL problem files, solves them with the vendored Fast Downward planner, then converts or executes the resulting plans in AI2-THOR-oriented scripts.
+
+The useful inherited ideas are:
+
+- LM-driven task decomposition.
+- PDDL as the symbolic planning representation.
+- Fast Downward as the classical planner.
+- MAT-THOR/AI2-THOR household task benchmark inspiration.
+- Multi-agent long-horizon planning structure.
+
+The limitations for this dissertation project are:
+
+- It expects paid OpenAI API use.
+- It is script-heavy rather than a clean reusable project.
+- It includes generated artefacts and vendored environment material.
+- It does not provide the local/free LLM + MILP + ROS 2/LIMO-ready dissertation package required here.

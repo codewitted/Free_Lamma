@@ -78,7 +78,25 @@ ollama serve
 
 The backend defaults to `LLM_PROVIDER=ollama`. If Ollama is unavailable, the demo uses the rule-based parser so the pipeline remains demonstrable.
 
-## Run Backend
+## Main No-Server Demo
+
+You do not need the GUI to demonstrate the project. The primary dissertation demo is now:
+
+```powershell
+.\scripts\run_floor6_ai2thor_video.ps1
+```
+
+or:
+
+```bash
+python scripts/run_floor6_ai2thor_video.py --open-video
+```
+
+This runs the Floor 6 mission, performs MILP allocation, records real AI2-THOR `FloorPlan6` frames to `docs/demo_video_script/floor6_ai2thor_demo.mp4`, and opens the MP4 in VLC when VLC is installed.
+
+AI2-THOR does not ship with visible LIMO robot bodies and may not provide a working Windows build for every Unity commit. For visible LIMO robots, use the Gazebo/ROS 2 execution layer or add custom Unity robot assets. This repository avoids fake cartoon robot videos; if AI2-THOR cannot launch, the video script exits with a setup error instead of pretending.
+
+## Optional Backend
 
 ```bash
 python -m uvicorn backend.api.main:app --host 0.0.0.0 --port 8000 --reload
