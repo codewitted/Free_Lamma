@@ -21,9 +21,12 @@ api_key_*.txt
 
 # Generated outputs
 evaluation/results/*.csv
+evaluation/results/*.pddl
 evaluation/plots/*.png
 logs/
 *.log
+.pytest_cache/
+pytest-cache-files-*/
 sas_plan*
 output.sas
 
@@ -39,4 +42,3 @@ simulation/gazebo_limo/bags/
 Thumbs.db
 .vscode/
 .idea/
-
