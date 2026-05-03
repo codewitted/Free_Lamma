@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaMMA-P AI2-THOR Demo</title>
+  <style>
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #101418; color: #eef2f5; }
+    main { max-width: 1180px; margin: 0 auto; padding: 28px; }
+    h1 { font-size: 28px; font-weight: 650; margin: 0 0 8px; }
+    p { color: #b8c3cc; margin: 0 0 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+    section { background: #171d23; border: 1px solid #28313a; border-radius: 8px; padding: 14px; }
+    h2 { font-size: 15px; font-weight: 600; margin: 0 0 10px; }
+    video { width: 100%; display: block; background: #000; border-radius: 6px; }
+    pre { white-space: pre-wrap; color: #dce5ec; background: #171d23; border: 1px solid #28313a; border-radius: 8px; padding: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>LaMMA-P AI2-THOR Robot Carry Demo</h1>
+    <p>Two AI2-THOR agents pick up visible objects, carry them across the scene, and place them on receptacles.</p>
+    <div class="grid">
+            <section>
+              <h2>Agent 1</h2>
+              <video src="video_agent_1.mp4" controls autoplay muted loop></video>
+            </section>
+            
+            <section>
+              <h2>Agent 2</h2>
+              <video src="video_agent_2.mp4" controls autoplay muted loop></video>
+            </section>
+            
+            <section>
+              <h2>Top View</h2>
+              <video src="video_top_view.mp4" controls autoplay muted loop></video>
+            </section>
+            </div>
+    <h2>Run Summary</h2>
+    <pre>{
+  "scene": "FloorPlan1",
+  "tasks": [
+    {
+      "agent": 1,
+      "picked_object": "Apple|-00.47|+01.15|+00.48",
+      "destination": "Bowl|+00.27|+01.10|-00.75"
+    },
+    {
+      "agent": 2,
+      "picked_object": "Book|+00.15|+01.10|+00.62",
+      "destination": "Cabinet|-01.55|+00.50|+00.38"
+    }
+  ]
+}</pre>
+  </main>
+</body>
+</html>

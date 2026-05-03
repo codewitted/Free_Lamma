@@ -1,0 +1,31 @@
+Verification summary updated after successful WSL2 Ubuntu run on 2026-05-02.
+Project root: /home/jesse/Documents/Lamma/Free_Lamma/27047194_RBT3001_LaMMA_P_Artefact
+
+Initial packaging-environment findings:
+- Asset check passed.
+- Launcher syntax check passed.
+- Gazebo launch was initially blocked because Gazebo Sim was not installed in the restricted container.
+
+Final WSL2 Ubuntu verification:
+1. Installed Gazebo Sim runtime successfully.
+   Important note: Gazebo Classic (`gazebo11`) was installed first by mistake and did not satisfy the project.
+
+2. Verified Gazebo Sim CLI:
+   which gz -> /usr/bin/gz
+   gz sim --versions -> 8.11.0
+
+3. Ran the project launcher:
+   cd gazebo_demo
+   bash scripts/run_gz_sim_demo.sh
+
+4. Observed result:
+   Gazebo Sim opened successfully under WSLg and the scripted mission playback executed.
+   Console output showed live pose updates, for example:
+   set_pose robot1 -> x=0.847 y=0.892 z=0.18
+   set_pose apple -> x=0.847 y=0.892 z=0.46
+   set_pose robot1 -> x=1.120 y=0.850 z=0.18
+   set_pose apple -> x=1.120 y=0.850 z=0.46
+
+Conclusion:
+- Gazebo Sim is now verified live on WSL2 Ubuntu.
+- The artefact's Gazebo demonstration is no longer only asset-validated; it has been run successfully.

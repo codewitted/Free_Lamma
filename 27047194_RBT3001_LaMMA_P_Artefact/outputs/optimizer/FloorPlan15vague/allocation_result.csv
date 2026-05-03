@@ -1,0 +1,5 @@
+task_id,description,required_skill,object_name,target_name,greedy_robot,optimised_robot
+t1,Move Lettuce to Fridge,PutObject,Lettuce,Fridge,robot3,robot1
+t2,Move Tomato to Fridge,PutObject,Tomato,Fridge,robot1,robot3
+t3,SliceObject Lettuce,SliceObject,Lettuce,,robot2,robot1
+t4,SliceObject Tomato,SliceObject,Tomato,,robot3,robot3

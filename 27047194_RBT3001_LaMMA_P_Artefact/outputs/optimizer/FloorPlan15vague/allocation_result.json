@@ -1,0 +1,182 @@
+{
+  "source_task_file": "data/final_test/FloorPlan15vague.json",
+  "task": "Prepare ingrediants for cooking a sandwich tomorrow",
+  "robots": [
+    {
+      "name": "robot1",
+      "skills": [
+        "GoToObject",
+        "OpenObject",
+        "CloseObject",
+        "BreakObject",
+        "SliceObject",
+        "SwitchOn",
+        "SwitchOff",
+        "PickupObject",
+        "PutObject",
+        "DropHandObject",
+        "ThrowObject",
+        "PushObject",
+        "PullObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.1141243436406656,
+      "battery": 0.8482003139444162,
+      "position": [
+        0.06329847501201985,
+        4.307562607412125
+      ]
+    },
+    {
+      "name": "robot2",
+      "skills": [
+        "GoToObject",
+        "OpenObject",
+        "CloseObject",
+        "BreakObject",
+        "SliceObject",
+        "SwitchOn",
+        "SwitchOff",
+        "PickupObject",
+        "PutObject",
+        "DropHandObject",
+        "ThrowObject",
+        "PushObject",
+        "PullObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.1375364778767192,
+      "battery": 0.7626427114504954,
+      "position": [
+        1.5772634515485873,
+        1.126484447421153
+      ]
+    },
+    {
+      "name": "robot3",
+      "skills": [
+        "GoToObject",
+        "OpenObject",
+        "CloseObject",
+        "BreakObject",
+        "SliceObject",
+        "SwitchOn",
+        "SwitchOff",
+        "PickupObject",
+        "PutObject",
+        "DropHandObject",
+        "ThrowObject",
+        "PushObject",
+        "PullObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.02521728583965853,
+      "battery": 0.7250051736307809,
+      "position": [
+        3.9958438519378756,
+        5.970837344874357
+      ]
+    }
+  ],
+  "subtasks": [
+    {
+      "id": "t1",
+      "description": "Move Lettuce to Fridge",
+      "required_skill": "PutObject",
+      "object_name": "Lettuce",
+      "target_name": "Fridge",
+      "utility": 12.0,
+      "load": 0.2
+    },
+    {
+      "id": "t2",
+      "description": "Move Tomato to Fridge",
+      "required_skill": "PutObject",
+      "object_name": "Tomato",
+      "target_name": "Fridge",
+      "utility": 12.0,
+      "load": 0.2
+    },
+    {
+      "id": "t3",
+      "description": "SliceObject Lettuce",
+      "required_skill": "SliceObject",
+      "object_name": "Lettuce",
+      "target_name": null,
+      "utility": 10.0,
+      "load": 0.05
+    },
+    {
+      "id": "t4",
+      "description": "SliceObject Tomato",
+      "required_skill": "SliceObject",
+      "object_name": "Tomato",
+      "target_name": null,
+      "utility": 10.0,
+      "load": 0.05
+    }
+  ],
+  "greedy_metrics": {
+    "assigned_tasks": 4,
+    "feasible_tasks": 4,
+    "success_proxy": 1.0,
+    "total_travel_cost": 21.06,
+    "workload_std": 0.471,
+    "workload": {
+      "robot1": 1,
+      "robot2": 1,
+      "robot3": 2
+    }
+  },
+  "optimised_metrics": {
+    "assigned_tasks": 4,
+    "feasible_tasks": 4,
+    "success_proxy": 1.0,
+    "total_travel_cost": 18.209,
+    "workload_std": 0.943,
+    "workload": {
+      "robot1": 2,
+      "robot2": 0,
+      "robot3": 2
+    }
+  },
+  "task_rows": [
+    {
+      "task_id": "t1",
+      "description": "Move Lettuce to Fridge",
+      "required_skill": "PutObject",
+      "object_name": "Lettuce",
+      "target_name": "Fridge",
+      "greedy_robot": "robot3",
+      "optimised_robot": "robot1"
+    },
+    {
+      "task_id": "t2",
+      "description": "Move Tomato to Fridge",
+      "required_skill": "PutObject",
+      "object_name": "Tomato",
+      "target_name": "Fridge",
+      "greedy_robot": "robot1",
+      "optimised_robot": "robot3"
+    },
+    {
+      "task_id": "t3",
+      "description": "SliceObject Lettuce",
+      "required_skill": "SliceObject",
+      "object_name": "Lettuce",
+      "target_name": "",
+      "greedy_robot": "robot2",
+      "optimised_robot": "robot1"
+    },
+    {
+      "task_id": "t4",
+      "description": "SliceObject Tomato",
+      "required_skill": "SliceObject",
+      "object_name": "Tomato",
+      "target_name": "",
+      "greedy_robot": "robot3",
+      "optimised_robot": "robot3"
+    }
+  ],
+  "output_dir": "outputs/optimizer/FloorPlan15vague"
+}

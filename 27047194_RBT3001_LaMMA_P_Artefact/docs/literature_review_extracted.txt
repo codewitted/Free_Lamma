@@ -1,0 +1,261 @@
+
+
+--- PAGE 1 ---
+Learning-Assisted Multi-Robot Coordination: Integrating Large Language 
+Models with PDDL and Constraint-Driven Optimisation for a team of LIMO 
+Robots 
+Name Kevin Byamukama 
+ID No. 27047194 
+Assessment Robotics Project 
+Project No. 2526 
+ 
+Abstract 
+This project develops a hybrid planning framework that fuses the semantic reasoning 
+power of Large Language Models (LLMs) with the structured rigour of the Planning 
+Domain Definition Language (PDDL) to achieve explainable coordination at scale of 
+multiple robots. Using the LaMMA-P architecture from Zhang et al. (2025), it will 
+translate natural-language instructions into PDDL problems, generate executable plans 
+through Fast Downward, and execute them collaboratively on simulated and physical 
+LIMO robots. 
+In this novel contribution, it extends the LLM's preliminary task allocations by a 
+constraint-driven optimisation layer using a Mixed-Integer Linear Programming (MILP) 
+solver. The optimiser maximizes global utility-minimizing travel cost while respecting 
+availability, temporal, and capability constraints-thus producing stable, high-quality 
+allocations. In the end, this ROS 2-based artefact will demonstrate robust natural-
+language coordination in both Gazebo simulation and real-world operation. 
+ 
+Keywords 
+LLM · PDDL · Multi-Robot Coordination · ROS 2 · LIMO · Optimisation · Task Allocation · 
+Utility Maximisation 
+ 
+1 Introduction 
+ Most modern applications, such as logistics, agriculture, and service automation, 
+require the effective coordination of multiple autonomous robots, which remains one of 
+the most important challenges in robotics. While classical symbolic planners-like those 
+described in PDDL (McDermott et al., 1998; Helmert, 2006)-provide logical correctness, 
+they have limited flexibility when ambiguity or high-level human instructions arise. On 
+the other hand, Large Language Models exhibit remarkable semantic reasoning 
+capabilities but produce plans that provide no formal guarantees of feasibility or 
+optimality. 
+LaMMA-P (Zhang et al. 2025) recently bridged this divide by applying an LLM to break 
+down natural-language tasks into symbolic goals, while using Fast Downward for low-
+level planning. In the MAT-THOR benchmark, the approach increased task success by 
+105 % and efficiency by 36 % over previous LM-based planners. Such results attest to 
+the potential value of combining statistical and symbolic reasoning. Nevertheless, its 
+use in simulation was limited, and its reliance on probabilistic text generation for task 
+allocation led to instability and ill-formatted assignments at times. This level of 
+randomness simply cannot guarantee consistent performance, especially when robots 
+have very different locations, battery levels, or task loads-as is common in real systems. 
+
+--- PAGE 2 ---
+ To address this limitation, the proposed project will extend LaMMA-P with a constraint-
+driven optimisation layer that transforms the LLM's task decomposition into a 
+mathematically validated allocation. Instead of executing the LLM's textual plan 
+directly, each sub-task is encoded as a decision variable within a MILP formulation. In 
+this way, the optimization model enforces constraints on capability feasibility, task 
+precedence, and non-overlapping temporal windows, along with resource limits, while 
+optimizing an objective function—typically to minimize total makespan, energy cost, or 
+travel time, or to balance workload distribution across heterogeneous agents. 
+The MILP layer will be implemented in modern, open-source optimisation libraries such 
+as SciPy's optimize.milp interface, wrapping the HiGHS solver, or Coin-OR's PuLP , which 
+support efficient branch-and-bound and presolve strategies for mixed-integer 
+problems. These solvers can handle binary assignment variables (x[i,r] ∈ {0,1}) 
+alongside continuous scheduling variables (t[i] ≥ 0), thus enabling the system to return 
+deterministic, globally consistent allocations that respect both capability and temporal 
+feasibility. Using a formal solver also avoids the "length/randomness → wrong format" 
+instability that Zhang et al. (2025) identify in the LLM's textual plans, ensuring 
+reproducibility and convergence to a mathematically optimal or near-optimal solution. 
+Alternative approaches to multi-robot coordination have included auction-based and 
+constraint-programming formulations (Dias et al., 2006; Capitan et al., 2013), which 
+offer robustness under resource or timing constraints. By integrating these optimisation 
+principles with LLM-driven semantic parsing, the proposed system combines the 
+generality of language understanding with the reliability of mathematical planning. 
+The final architecture will operate within ROS 2 Humble, integrating LLM parsing, PDDL 
+problem generation, Fast Downward planning, and MILP allocation before dispatching 
+actions through Nav2. Validation will occur first in a Gazebo warehouse world with 
+multiple LIMO robots, then on physical LIMO hardware using AprilTag localisation. 
+Performance will be compared against PDDL-only and LLM-only baselines on success 
+rate, execution efficiency, and utility score. 
+This work delivers an embodied demonstration of language-informed symbolic planning 
+enriched by optimisation. Practically, it advances reliable natural-language supervision 
+of robot fleets, aligning with UN SDG 9 (Industry and Innovation) through intelligent 
+automation and improved resource efficiency. 
+ 
+2 Aim 
+To design, implement, and evaluate a Large Language Model-driven PDDL planning 
+framework enhanced by a constraint-driven optimisation layer that maximises utility 
+and ensures reliable multi-LIMO robot coordination. 
+SMART Objectives 
+1. O1 (Literature & Design) – Critically review LLM-assisted symbolic planners 
+(SMART-LLM 2024, LaMMA-P 2025) and define the ROS 2 system architecture. 
+2. O2 (PDDL Implementation) – Develop PDDL domain and problem generators 
+supporting navigate, pickup, drop, meet, charge actions for multiple robots. 
+3. O3 (NL → PDDL Pipeline) – Implement an LLM interface that converts natural-
+language commands into structured JSON and valid PDDL problems with 
+schema validation. 
+
+--- PAGE 3 ---
+4. O4 (Constraint-Driven Optimisation) – Integrate a MILP/ILP module that refines 
+LLM-suggested allocations according to robot availability, travel cost, and 
+capability constraints, maximising overall system utility. 
+5. O5 (Evaluation & Demo) – Benchmark the hybrid planner in Gazebo and on real 
+LIMO robots, comparing allocation quality, execution time, and utility gains 
+against PDDL-only and LLM-only baselines. 
+6. O6 (Reporting) – Document methods and experimental outcomes, producing a 
+publication-quality dissertation and demonstration video. 
+ 
+ 
+Figure 1. System architecture of the proposed Learning-Assisted Multi-Robot Coordination framework 
+ 
+ 
+3 Project Plan and Risk Analysis  
+3.1 Projection Table 
+ 
+
+
+--- PAGE 4 ---
+Month  Task Activity / Task Deliverable / 
+Milestone Dependencies 
+Oct 
+O1 
+ 
+O1.1 
+Confirm topic & 
+supervisor; set up Git/ROS 
+2 workspace 
+Environment 
+ready 
+ 
+Nov 
+O1.2 
+Literature review on 
+LaMMA-P and 
+optimisation-based 
+coordination 
+Annotated 
+bibliography O1.1 
+O1.3 
+Define architecture; 
+identify LaMMA-P modules 
+to extend 
+Architecture 
+diagram O1.2 
+O2 
+ 
+O2.1 
+Implement baseline PDDL 
+domain and problem 
+definitions 
+Working 
+domain.pddl O1.3 
+Dec 
+O2.2 
+Integrate Fast Downward 
+planner with Python API for 
+ROS 2 
+Planner client 
+tested O2.1 
+ O3.1 Implement NL → PDDL 
+translator (LLM + validator) 
+Functional 
+pipeline O2.2 
+Jan 
+O4 
+ 
+ O4.1 
+Develop MILP optimiser 
+(availability, utility 
+constraints) 
+Optimiser 
+prototype O3.1 
+Feb O4.2 
+Integrate planner + 
+optimiser + ROS 2 
+executor: test in Gazebo 
+End-to-end 
+system in 
+simulation 
+O4.1 
+Mar 
+O5 
+O 
+O5.1 Simulation experiments 
+(utility vs baseline) Results set 1 O4.2 
+O5.2 Deploy to physical LIMO 
+robots; tune Nav2 LIMO demo setup O5.1 
+Apr 
+O5.3 
+Run real-robot 
+experiments & record 
+demo 
+Video and logs O5.2 
+O5.4 Ablation study (LLM-only / 
+PDDL-only / Hybrid) 
+Comparative 
+results O5.3 
+May O6 
+ 
+O6.1 Analysis and write-up 
+Results & 
+discussion 
+chapters 
+O5.4 
+O6.2 Proof-reading and 
+submission Final PDF O6.1 
+
+--- PAGE 5 ---
+Each experimental phase includes quantitative benchmarking to verify that the 
+optimiser delivers measurable utility improvements over baseline allocations. 
+ 
+3.2 Risk Analysis 
+Specific Risk Likelihood Impact Mitigation Strategy 
+R1 – LLM generates 
+malformed PDDL Medium High Strict JSON schema validation and 
+fallback rule-based parser 
+R2 – MILP solver too slow 
+for runtime use Medium Medium Pre-solve allocations; use warm-
+starting and small task sets 
+R3 – Multi-robot deadlocks 
+in Nav2 Medium High Implement mutex-based resource 
+server and timeouts 
+R4 – LIMO localisation drift Medium Medium AprilTag re-localisation and speed 
+limits 
+R5 – LLM API or dataset 
+access restrictions Low Medium Maintain local models (Llama 3.1-8B) 
+and Gazebo-only fallback 
+ 
+Contingency: all experiments reproducible within Gazebo simulation if hardware 
+access is restricted. 
+ 
+4 Ethical Considerations 
+The project involves no human participants or personal data; ethical approval is not 
+required. If future work includes a user-interface study, a low-risk LEAS application will 
+be submitted in advance. 
+ 
+ 
+References 
+Capitán, J., Spaan, M., Merino, L. and Ollero, A. (n.d.). Decentralized Multi-Robot 
+Cooperation with Auctioned POMDPs. [online] Available at: 
+https://st.ewi.tudelft.nl/~mtjspaan/pub/Capitan11msdm.pdf [Accessed 4 Nov. 2025]. 
+Helmert, M. (2006). The Fast Downward Planning System. Journal of Artificial Intelligence 
+Research, [online] 26, pp.191–246. doi:https://doi.org/10.1613/jair.1705. 
+Kannan, S.S., Venkatesh, V .L.N. and Min, B.-C. (2023). SMART-LLM: Smart Multi-Agent 
+Robot Task Planning Using Large Language Models. [online] arXiv.org. 
+doi:https://doi.org/10.48550/arXiv.2309.10062. 
+McDermott, D., Ghallab, M., Howe, A., Knoblock, C.A., Ram, A., Veloso, M., Weld, D.S. 
+and Wilkins, D. (1998). PDDL-the Planning Domain Definition Language. [online] Semantic 
+Scholar. Available at: https://www.semanticscholar.org/paper/PDDL-the-planning-domain-
+
+--- PAGE 6 ---
+definition-language-McDermott-Ghallab/d82c6b8081343b2eae63d45feefe630233ad60e1 
+[Accessed 4 Nov. 2025]. 
+Torreño, A., Onaindia, E., Komenda, A. and Štolba, M. (2017). Cooperative Multi-Agent 
+Planning. ACM Computing Surveys, 50(6), pp.1–32. doi:https://doi.org/10.1145/3128584. 
+Zhang, X., Qin, H., Wang, F., Dong, Y . and Li, J. (2024). LaMMA-P: Generalizable Multi-
+Agent Long-Horizon Task Allocation and Planning with LM-Driven PDDL Planner. [online] 
+arXiv.org. Available at: https://arxiv.org/abs/2409.20560 [Accessed 2 Nov. 2025]. 
+Zlot, R. and Stentz, A. (2006). Market-based Multirobot Coordination for Complex Tasks. 
+The International Journal of Robotics Research, 25(1), pp.73–101. 
+doi:https://doi.org/10.1177/0278364906061160. 
+ 
+ 

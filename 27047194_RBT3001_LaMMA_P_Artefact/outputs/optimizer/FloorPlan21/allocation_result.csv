@@ -1,0 +1,2 @@
+task_id,description,required_skill,object_name,target_name,greedy_robot,optimised_robot
+t1,Toast a slice of the breadloaf,GoToObject,TaskArea,,robot25,robot25

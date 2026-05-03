@@ -1,0 +1,2 @@
+task_id,description,required_skill,object_name,target_name,greedy_robot,optimised_robot
+t1,SliceObject Tomato,SliceObject,Tomato,,robot3,robot3

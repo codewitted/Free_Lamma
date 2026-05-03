@@ -1,0 +1,25 @@
+{
+  "task": "put the apple and tomato in the fridge and switch off the light",
+  "robot list": [
+    1,
+    2,
+    3
+  ],
+  "object_states": [
+    {
+      "name": "Fridge",
+      "contains": [
+        "Apple",
+        "Tomato"
+      ],
+      "state": null
+    },
+    {
+      "name": "LightSwitch",
+      "contains": [],
+      "state": "OFF"
+    }
+  ],
+  "trans": 0,
+  "max_trans": 0
+}

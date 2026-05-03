@@ -1,0 +1,8 @@
+openai
+ai2thor==4.2.0
+scipy
+numpy
+opencv-python
+pathlib
+imageio
+imageio-ffmpeg

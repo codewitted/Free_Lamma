@@ -1,0 +1,4 @@
+task_id,description,required_skill,object_name,target_name,greedy_robot,optimised_robot
+t1,Move Apple to Fridge,PutObject,Apple,Fridge,robot3,robot1
+t2,Move Tomato to Fridge,PutObject,Tomato,Fridge,robot1,robot2
+t3,SwitchOff LightSwitch,SwitchOff,LightSwitch,,robot2,robot3

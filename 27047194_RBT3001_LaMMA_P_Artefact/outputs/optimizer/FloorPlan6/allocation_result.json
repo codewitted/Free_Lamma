@@ -1,0 +1,128 @@
+{
+  "source_task_file": "data/final_test/FloorPlan6.json",
+  "task": "Slice the tomato",
+  "robots": [
+    {
+      "name": "robot2",
+      "skills": [
+        "GoToObject",
+        "OpenObject",
+        "CloseObject",
+        "BreakObject",
+        "SliceObject",
+        "SwitchOn",
+        "SwitchOff",
+        "PickupObject",
+        "PutObject",
+        "DropHandObject",
+        "ThrowObject",
+        "PushObject",
+        "PullObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.1375364778767192,
+      "battery": 0.7626427114504954,
+      "position": [
+        1.5772634515485873,
+        1.126484447421153
+      ]
+    },
+    {
+      "name": "robot3",
+      "skills": [
+        "GoToObject",
+        "OpenObject",
+        "CloseObject",
+        "BreakObject",
+        "SliceObject",
+        "SwitchOn",
+        "SwitchOff",
+        "PickupObject",
+        "PutObject",
+        "DropHandObject",
+        "ThrowObject",
+        "PushObject",
+        "PullObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.02521728583965853,
+      "battery": 0.7250051736307809,
+      "position": [
+        3.9958438519378756,
+        5.970837344874357
+      ]
+    },
+    {
+      "name": "robot4",
+      "skills": [
+        "GoToObject",
+        "OpenObject",
+        "CloseObject",
+        "BreakObject",
+        "SliceObject",
+        "SwitchOn",
+        "SwitchOff",
+        "PickupObject",
+        "PutObject",
+        "DropHandObject",
+        "ThrowObject",
+        "PushObject",
+        "PullObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.035821572967297766,
+      "battery": 0.7031485029270753,
+      "position": [
+        7.584144882295314,
+        5.152095550473802
+      ]
+    }
+  ],
+  "subtasks": [
+    {
+      "id": "t1",
+      "description": "SliceObject Tomato",
+      "required_skill": "SliceObject",
+      "object_name": "Tomato",
+      "target_name": null,
+      "utility": 10.0,
+      "load": 0.05
+    }
+  ],
+  "greedy_metrics": {
+    "assigned_tasks": 1,
+    "feasible_tasks": 1,
+    "success_proxy": 1.0,
+    "total_travel_cost": 1.321,
+    "workload_std": 0.471,
+    "workload": {
+      "robot2": 0,
+      "robot3": 1,
+      "robot4": 0
+    }
+  },
+  "optimised_metrics": {
+    "assigned_tasks": 1,
+    "feasible_tasks": 1,
+    "success_proxy": 1.0,
+    "total_travel_cost": 1.321,
+    "workload_std": 0.471,
+    "workload": {
+      "robot2": 0,
+      "robot3": 1,
+      "robot4": 0
+    }
+  },
+  "task_rows": [
+    {
+      "task_id": "t1",
+      "description": "SliceObject Tomato",
+      "required_skill": "SliceObject",
+      "object_name": "Tomato",
+      "target_name": "",
+      "greedy_robot": "robot3",
+      "optimised_robot": "robot3"
+    }
+  ],
+  "output_dir": "outputs/optimizer/FloorPlan6"
+}

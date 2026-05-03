@@ -1,0 +1,98 @@
+{
+  "source_task_file": "data/final_test/FloorPlan21.json",
+  "task": "Toast a slice of the breadloaf",
+  "robots": [
+    {
+      "name": "robot24",
+      "skills": [
+        "GoToObject",
+        "SwitchOn",
+        "SwitchOff"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.11019258669349193,
+      "battery": 0.7229892384663665,
+      "position": [
+        8.692634645545072,
+        8.168655212076533
+      ]
+    },
+    {
+      "name": "robot25",
+      "skills": [
+        "GoToObject",
+        "PickupObject",
+        "PutObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.13580880139158313,
+      "battery": 0.7963515819740369,
+      "position": [
+        7.42158749546427,
+        2.045927066832298
+      ]
+    },
+    {
+      "name": "robot26",
+      "skills": [
+        "GoToObject",
+        "SliceObject",
+        "PickupObject"
+      ],
+      "mass_capacity": 100.0,
+      "availability": 0.03181303642499564,
+      "battery": 0.8749591566098294,
+      "position": [
+        3.7163335256549375,
+        5.9495162977719485
+      ]
+    }
+  ],
+  "subtasks": [
+    {
+      "id": "t1",
+      "description": "Toast a slice of the breadloaf",
+      "required_skill": "GoToObject",
+      "object_name": "TaskArea",
+      "target_name": null,
+      "utility": 5.0,
+      "load": 0.0
+    }
+  ],
+  "greedy_metrics": {
+    "assigned_tasks": 1,
+    "feasible_tasks": 1,
+    "success_proxy": 1.0,
+    "total_travel_cost": 2.778,
+    "workload_std": 0.471,
+    "workload": {
+      "robot24": 0,
+      "robot25": 1,
+      "robot26": 0
+    }
+  },
+  "optimised_metrics": {
+    "assigned_tasks": 1,
+    "feasible_tasks": 1,
+    "success_proxy": 1.0,
+    "total_travel_cost": 2.778,
+    "workload_std": 0.471,
+    "workload": {
+      "robot24": 0,
+      "robot25": 1,
+      "robot26": 0
+    }
+  },
+  "task_rows": [
+    {
+      "task_id": "t1",
+      "description": "Toast a slice of the breadloaf",
+      "required_skill": "GoToObject",
+      "object_name": "TaskArea",
+      "target_name": "",
+      "greedy_robot": "robot25",
+      "optimised_robot": "robot25"
+    }
+  ],
+  "output_dir": "outputs/optimizer/FloorPlan21"
+}
